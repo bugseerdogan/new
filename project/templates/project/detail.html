@@ -1,0 +1,77 @@
+{% extends 'project/base.html'%}
+{% block title %}Plan Details{% endblock %}
+{% block plans_active %}active{% endblock %}
+{% block body %}
+<div class="container-fluid plans-container ">
+
+    <div class="row">
+
+
+
+        <!-- Right -->
+        <div class="col-sm-8 col-md-9">
+
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'project:detail' planning.planning_id %}">View All</a></li>
+                <li role="presentation"><a href="{% url 'project:plan-add' %}">Add Plan</a></li>
+            </ul>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <h3>All Plans</h3>
+
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Publication</th>
+                            <th>Quality</th>
+                            <th>Medium</th>
+                            <th>Planned Date</th>
+                            <th>BL</th>
+                            <th>Applied Date</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                            <th>Is AL</th>
+                            <th>Is BL</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+
+                                <td>{{ planning.title }}</td>
+                                <td>{{ planning.author }}</td>
+                                <td>{{ planning.publication }}</td>
+                                <td>{{ planning.quality }}</td>
+                                <td>{{ planning.medium }}</td>
+                                <td>{{ planning.planned_date }}</td>
+                                <td>{{ planning.bl }}</td>
+                                <td>{{ planning.applied_date }}</td>
+                                <td>{{ planning.status }}</td>
+                                <td>{{ planning.notes }}</td>
+                                <td>{{ planning.is_AL }}</td>
+                                <td>{{ planning.is_BL }}</td>
+
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

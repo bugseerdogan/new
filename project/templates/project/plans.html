@@ -1,0 +1,53 @@
+{% extends 'project/base.html' %}
+{% block title %}All Plans{% endblock %}
+{% block plans_active %}active{% endblock %}
+
+{% block body %}
+<div class="container-fluid plans-container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <ul class="nav nav-pills" style="margin-bottom: 10px;">
+                <li role="presentation" class="active"><a href="{% url 'project:plans' 'all' %}">View All</a></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Quality</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for plan in plan_list %}
+                                <tr>
+                                    <td>{{ plan.title }}</td>
+                                    <td>{{ plan.author }}</td>
+                                    <td>
+                                        <a href="{% url 'project:detail' plan.planning_id %}">{{ plan.title }}</a>
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}
